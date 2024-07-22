@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <script src="./js/script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-container container">
+        <button class="btn btn-again">Сначала!</button>
+        <h1 class="header-title h1">(Между 1 и 20)</h1>
+      </div>
+    </header>
+    <main class="main">
+      <section class="question-container container">
+        <h1 class="question-title h1">Угадай число!</h1>
+        <div class="question-box">???</div>
+      </section>
+    </main>
+    <footer class="footer">
+      <section class="checked-container container">
+        <div class="left-panel">
+          <input
+            type="number"
+            placeholder="Введите число"
+            class="checked-input"
+            min="1"
+            max="20"
+          />
+          <button class="btn btn-check">Проверить!</button>
+        </div>
+        <div class="rigth-panel">
+          <h1 class="h1 action-title">Начни угадывать!</h1>
+          <h1 class="h1">Очки: <span class="point"></span></h1>
+          <h1 class="h1">Лучший результат: <span class="score"></span></h1>
+        </div>
+      </section>
+    </footer>
+  </body>
+</html>
