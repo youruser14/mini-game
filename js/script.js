@@ -10,41 +10,46 @@ let pointNumber = 20;
 point.innerHTML = pointNumber;
 let hightScore = 0;
 
+const displayMessages = (title) => {
+  if (pointNumber > 1) {
+    actionTitle.textContent = title;
+    pointNumber--;
+    point.innerHTML = pointNumber;
+  } else {
+    actionTitle.textContent = "Game Over!";
+    point.innerHTML = 0;
+  }
+};
+
+const startAndRestatMessages = (title, questionTitle, questionWidth, bodyColor) => {
+  actionTitle.textContent = title;
+  question.textContent = questionTitle;
+  question.style.width = questionWidth;
+  document.querySelector("body").style.backgroundColor = bodyColor;
+};
+
 const checkedNumber = () => {
   const input = Number(document.querySelector(".checked-input").value);
+
   if (!input) {
     actionTitle.textContent = "Введите число!";
   } else if (input === randomNumber) {
-    actionTitle.textContent = "Правильно!";
-    question.textContent = randomNumber;
-    question.style.width = "45vw";
-    document.querySelector("body").style.backgroundColor = "green";
+    startAndRestatMessages("Правильно!", randomNumber, "45vw", "green");
     if (pointNumber > hightScore) {
       hightScore = pointNumber;
       score.textContent = hightScore;
     }
-  } else if (input > randomNumber) {
-    if (pointNumber > 1) {
-      actionTitle.textContent = "Многовато!";
-      pointNumber--;
-      point.innerHTML = pointNumber;
-    }
-  } else if (input < randomNumber) {
-    if (pointNumber > 1) {
-      actionTitle.textContent = "Маловато!";
-      pointNumber--;
-      point.innerHTML = pointNumber;
-    }
+  } else if (input !== randomNumber) {
+    input > randomNumber ? displayMessages("Многовато!") : displayMessages("Маловато!");
   }
 };
 const restartGame = () => {
   document.querySelector(".checked-input").value = "";
-  document.querySelector("body").style.backgroundColor = "";
-  actionTitle.textContent = "Начни угадывать!";
   pointNumber = 20;
-  question.textContent = "???";
   randomNumber = Math.floor(Math.random() * 20) + 1;
   point.innerHTML = pointNumber;
+  startAndRestatMessages("Начни угадывать!", "???", "", "");
 };
 btnAgain.addEventListener("click", restartGame);
 btnCheck.addEventListener("click", checkedNumber);
+
